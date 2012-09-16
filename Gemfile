@@ -6,7 +6,6 @@ gem 'rails', '3.2.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'rspec-rails', :groups => [:development, :test]
 
 
 # Gems used only for assets and not required
@@ -19,6 +18,12 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :test, :development do
+	gem 'rspec-rails'
+	gem 'factory_girl_rails', "~> 4.0"
+	gem 'ffaker'
 end
 
 gem 'jquery-rails'
