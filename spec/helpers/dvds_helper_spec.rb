@@ -12,4 +12,12 @@ require 'spec_helper'
 # end
 describe DvdsHelper do
 
+	describe '#amazon_link' do
+		it 'should output the correct link' do
+			@dvd = FactoryGirl.create(:dvd)
+			expected_link = 'http://www.amazon.com/dp/' + @dvd.asin
+			amazon_link(@dvd).should == expected_link
+		end
+	end
+
 end

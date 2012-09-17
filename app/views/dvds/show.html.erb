@@ -5,7 +5,9 @@
 	<%= @dvd.release_date %>
 </p>
 <p>
-	<%= @dvd.asin %>
+	<% if @dvd.asin %>
+		<%= link_to @dvd.asin, amazon_link(@dvd) %>
+	<% end %>
 </p>
 
 <p>
