@@ -5,6 +5,6 @@ FactoryGirl.define do
     first_name 				Faker::Name.first_name
     last_name 				Faker::Name.last_name
     date_of_birth 		(Random.rand(10_000)+10_000).days.ago.to_date
-    gender 						["m","f"][Random.rand(2)]
+    gender 						["male","female","other"][Random.rand(3)]
   end
 end

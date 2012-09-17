@@ -13,14 +13,4 @@ class Person < ActiveRecord::Base
   	name
   end
 
-  def gender
-  	case read_attribute :gender
-  	when 'm'
-  		"male"
-  	when 'f'
-  		"female"
-  	when 'o'
-  		"other"
-  	end
-  end
 end

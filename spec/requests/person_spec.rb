@@ -43,12 +43,36 @@ describe Person do
 		end
 
 		it 'has an edit button' do
-			page.should have_button('Edit DVD')
+			page.should have_button('Edit person')
 		end
 
 		it 'has a delete button' do
-			page.should have_button('Delete DVD')
+			page.should have_button('Delete person')
 		end
+	end
+
+	describe '#edit' do
+		before :each do
+			@person = FactoryGirl.create(:person)
+			visit edit_person_path(@person)
+		end
+
+		it 'has a field with the current first name' do
+			find_field('person[first_name]').value.should == @person.first_name
+		end
+
+		it 'has a field with the current last name' do
+			find_field('person[last_name]').value.should == @person.last_name
+		end
+
+		it 'has a field with the current date of birth' do
+			find_field('person[date_of_birth(1i)]').value.should == @person.date_of_birth.year.to_s
+		end
+
+		it 'has a field with the current gender' do
+			find_field('person[gender]').value.should == @person.gender
+		end
+
 	end
 
 end

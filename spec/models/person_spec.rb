@@ -39,10 +39,4 @@ describe Person do
   	end
   end
 
-  describe '#gender' do
-    it 'returns the full word' do
-      @actor = FactoryGirl.build(:person, :gender => 'm')
-      @actor.gender.should == "male"
-    end
-  end
 end
