@@ -5,7 +5,7 @@
 	<%= @dvd.release_date %>
 </p>
 <p>
-	<% if @dvd.asin %>
+	<% if !@dvd.asin.blank? %>
 		<span><%= image_tag 'amazon.png' %></span>
 		<span><%= link_to @dvd.asin, amazon_link(@dvd) %></span>
 	<% end %>

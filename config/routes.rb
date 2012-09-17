@@ -1,4 +1,12 @@
 Dvdlisted::Application.routes.draw do
+  get "actors/index"
+
+  get "actors/new"
+
+  get "actors/show"
+
+  get "actors/edit"
+
   resources :dvds
 
   root :to => 'dvds#index'

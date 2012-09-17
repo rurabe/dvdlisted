@@ -9,7 +9,11 @@
 	</div>
 	<div>
 		<span class="form-label"><%= f.label :release_date %></span>
-		<span class="form-field"><%= f.date_select :release_date %></span>
+		<span class="form-field"><%= f.date_select :release_date, 
+																							 :default => nil, 
+																							 :include_blank => true,
+																							 :end_year => 1926,
+																							 :start_year => Date.today.year %></span>
 	</div>
 	<div>
 		<span class="form-label"><%= f.label "Amazon ID" %></span>
