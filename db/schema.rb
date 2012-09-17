@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917062648) do
+ActiveRecord::Schema.define(:version => 20120917103058) do
 
   create_table "dvds", :force => true do |t|
     t.string   "name"
@@ -30,5 +30,16 @@ ActiveRecord::Schema.define(:version => 20120917062648) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "roles", :force => true do |t|
+    t.string   "role_type"
+    t.integer  "dvd_id"
+    t.integer  "person_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "roles", ["dvd_id"], :name => "index_roles_on_dvd_id"
+  add_index "roles", ["person_id"], :name => "index_roles_on_person_id"
 
 end

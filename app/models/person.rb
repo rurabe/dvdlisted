@@ -1,6 +1,9 @@
 class Person < ActiveRecord::Base
   attr_accessible :date_of_birth, :first_name, :gender, :last_name
 
+  has_many :roles
+  has_many :dvds, :through => :roles
+
   validates_presence_of :first_name, 
   											:gender
 
