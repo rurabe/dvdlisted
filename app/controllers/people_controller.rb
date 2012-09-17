@@ -23,6 +23,8 @@ class PeopleController < ApplicationController
   end
 
   def edit
+    @role = Role.new
+    @movies = @person.dvds_as_an_actor
   end
 
   def update

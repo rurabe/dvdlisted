@@ -26,6 +26,7 @@ group :test, :development do
 	gem 'capybara'
 	gem 'factory_girl_rails', "~> 4.0"
 	gem 'ffaker'
+	gem 'quiet_assets'
 end
 
 gem 'jquery-rails'

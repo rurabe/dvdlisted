@@ -1,3 +1,24 @@
 <h1>Update Person</h1>
 
 <%= render :partial => 'form' %>
+
+<h3><%= @person.first_name %>'s Movies</h3>
+	<ul>
+		<% @movies.each do |movie| %>
+			<li> <%= link_to movie.name, movie %> </li>
+		<% end %>
+	</ul>
+
+<p>
+	<%= form_for @role do |f| %>
+
+		<%= @person.first_name %> was also a(n)
+		<%= f.select 	:role_type, ["actor", "director"] %> in
+		<%= f.collection_select(:dvd_id, Dvd.all, :id, :name, 
+													:include_blank => true, 
+													:default => nil) %>
+
+		<%= f.hidden_field :person_id, :value => @person.id %>
+		<%= f.submit 'Give em credit' %>
+	<% end %>
+</p>

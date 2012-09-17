@@ -1,8 +1,11 @@
 class Person < ActiveRecord::Base
   attr_accessible :date_of_birth, :first_name, :gender, :last_name
 
-  has_many :roles
-  has_many :dvds, :through => :roles
+  has_many :roles,              :dependent => :destroy
+  has_many :dvds_as_an_actor,   :through => :roles, :conditions => "roles.role_type = 'actor'",
+                                :source => :dvd
+  has_many :dvds_as_a_director, :through => :roles, :conditions => "roles.role_type = 'director'",
+                                :source => :dvd
 
   validates_presence_of :first_name, 
   											:gender
