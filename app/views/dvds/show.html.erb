@@ -6,7 +6,8 @@
 </p>
 <p>
 	<% if @dvd.asin %>
-		<%= link_to @dvd.asin, amazon_link(@dvd) %>
+		<span><%= image_tag 'amazon.png' %></span>
+		<span><%= link_to @dvd.asin, amazon_link(@dvd) %></span>
 	<% end %>
 </p>
 
