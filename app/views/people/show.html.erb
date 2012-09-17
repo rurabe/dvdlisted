@@ -1,2 +1,13 @@
-<h1>People#show</h1>
-<p>Find me in app/views/people/show.html.erb</p>
+<h1><%= @person.full_name %></h1>
+<p><%= @person.date_of_birth %></p>
+<p><%= @person.gender %></p>
+
+<p>
+	<%= link_to edit_person_path(@person) do %>
+		<button class="btn btn-small btn-info">Edit person</button>
+	<% end %>
+
+	<%= link_to person_path(@person), :method => 'delete', :data => { :confirm => "Are you sure?" } do %>
+		<button class="btn btn-small btn-danger">Delete person</button>
+	<% end %>
+</p>
