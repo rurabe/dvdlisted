@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :role do
-    role_type "MyString"
-    dvd nil
-    person nil
+    role_type ["actor","director"][Random.rand(2)]
+    dvd_id Random.rand(100)
+    person_id Random.rand(100)
   end
 end

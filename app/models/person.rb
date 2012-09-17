@@ -8,6 +8,7 @@ class Person < ActiveRecord::Base
   											:gender
 
   validates_uniqueness_of :first_name, :scope => :last_name
+  
 
 
   def full_name
