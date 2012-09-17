@@ -1,5 +1,18 @@
-<h1>Your DVD Collection</h1>
+<h1>Your Library</h1>
 
-<% @dvds.each do |dvd| %>
-	<span><p><%= dvd.name %></p></span>
+<%= link_to new_dvd_path do %>
+	<p>
+		<button class="btn btn-info">Add a DVD</button>
+	</p>
 <% end %>
+<div>
+	<ul>
+		<% @dvds.each do |dvd| %>
+			<li>
+				<p>
+					<%= link_to dvd.name, dvd %>
+				</p>
+			</li>
+		<% end %>
+	</ul>
+</div>

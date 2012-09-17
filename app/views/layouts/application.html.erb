@@ -8,7 +8,30 @@
 </head>
 <body>
 
-<%= yield %>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="navbar-inner">
+    <%= link_to "DVDListed", root_path, { :class => "brand" } %>
+    <ul class="nav">
+      <li><a href="#">DVDs</a></li>
+      <li><a href="#">Actors</a></li>
+      <li><a href="#">Directors</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+<!-- Main -->
+<div class="container">
+
+	<%= render 'shared/flashdiv' %>
+
+	<%= yield %>
+</div>
+<%= flash.each {|x| x.inspect} %>
 
 </body>
 </html>

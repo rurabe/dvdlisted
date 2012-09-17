@@ -1,2 +1,20 @@
-<h1>Dvds#show</h1>
-<p>Find me in app/views/dvds/show.html.erb</p>
+<h1><%= @dvd.name %></h1>
+<p><%= @dvd.summary %></p>
+
+<p>
+	<%= @dvd.release_date %>
+</p>
+<p>
+	<%= @dvd.asin %>
+</p>
+
+<p>
+	<%= link_to edit_dvd_path(@dvd) do %>
+		<button class="btn btn-small btn-info">Edit DVD</button>
+	<% end %>
+
+	<%= link_to dvd_path(@dvd), :method => 'delete', :data => { :confirm => "Are you sure?" } do %>
+		<button class="btn btn-small btn-danger">Delete DVD</button>
+	<% end %>
+</p>
+

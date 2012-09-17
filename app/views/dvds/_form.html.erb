@@ -1,0 +1,21 @@
+<%= form_for @dvd do |f| %>
+	<div>
+		<span class="form-label"><%= f.label :name %></span>
+		<span class="form-field"><%= f.text_field :name %></span>
+	</div>
+	<div>
+		<span class="form-label"><%= f.label :summary %></span>
+		<span class="form-field"><%= f.text_area :summary, {:rows => 10} %></span>
+	</div>
+	<div>
+		<span class="form-label"><%= f.label :release_date %></span>
+		<span class="form-field"><%= f.date_select :release_date %></span>
+	</div>
+	<div>
+		<span class="form-label"><%= f.label "Amazon ID" %></span>
+		<span class="form-field"><%= f.text_field :asin %></span>
+	</div>
+	<div>
+		<%= f.submit %>
+	</div>
+<% end %>

@@ -1,8 +1,7 @@
 Dvdlisted::Application.routes.draw do
-  
-  root :to => 'dvds#index'
-
   resources :dvds
+
+  root :to => 'dvds#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
