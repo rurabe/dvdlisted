@@ -1,15 +1,20 @@
 Dvdlisted::Application.routes.draw do
-  get "actors/index"
 
-  get "actors/new"
 
-  get "actors/show"
-
-  get "actors/edit"
 
   resources :dvds
+  resources :people
 
   root :to => 'dvds#index'
+
+
+  # get "people/index"
+
+  # get "people/new"
+
+  # get "people/show"
+
+  # get "people/edit"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

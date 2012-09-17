@@ -1,6 +1,6 @@
 <div id="flash">
 	<% flash.each do |key,array| %>
-		<div class="alert-<%= key %>">
+		<div class="alert alert-<%= key %>">
 			<ul>
 			<% array.each do |error| %>
 			<li><%= error %></li>
