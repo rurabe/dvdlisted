@@ -9,7 +9,7 @@
 <p>
 	<% if !@dvd.asin.blank? %>
 		<span><%= image_tag 'amazon.png' %></span>
-		<span><%= link_to @dvd.asin, amazon_link(@dvd) %></span>
+		<span><%= link_to @dvd.asin, amazon_link(@dvd), :target => "_blank" %></span>
 	<% end %>
 </p>
 
