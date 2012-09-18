@@ -1,0 +1,19 @@
+<h3><%= @person.first_name %>'s Movies</h3>
+	
+<% if !@person.dvds_as_an_actor.empty? %>
+	<h4>Acting</h4>
+	<ul>
+		<% @person.dvds_as_an_actor.each do |dvd| %>
+			<li> <%= link_to dvd.name, dvd %> </li>
+		<% end %>
+	</ul>
+<% end %>
+
+<% if !@person.dvds_as_a_director.empty? %>
+	<h4>Directing</h4>
+	<ul>
+		<% @person.dvds_as_a_director.each do |dvd| %>
+			<li> <%= link_to dvd.name, dvd %> </li>
+		<% end %>
+	</ul>
+<% end %>

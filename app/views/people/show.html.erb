@@ -2,12 +2,13 @@
 <p><%= @person.date_of_birth %></p>
 <p><%= @person.gender %></p>
 
+<%= render :partial => 'people/person_dvds' %>
 <p>
-	<%= link_to edit_person_path(@person) do %>
-		<button class="btn btn-small btn-info">Edit person</button>
+	<%= link_to :action => 'edit' do %>
+		<button class="btn btn-small btn-info">Edit <%= @type %></button>
 	<% end %>
 
-	<%= link_to person_path(@person), :method => 'delete', :data => { :confirm => "Are you sure?" } do %>
-		<button class="btn btn-small btn-danger">Delete person</button>
+	<%= link_to "#{@person.id}", :method => 'delete', :data => {:confirm => "Are you sure?"} do %>
+		<button class="btn btn-small btn-danger">Delete <%= @type %></button>
 	<% end %>
 </p>

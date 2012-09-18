@@ -1,8 +1,8 @@
-<h1>Actors</h1>
+<h1><%= @type.pluralize.titlecase %></h1>
 
-<%= link_to new_person_path do %>
+<%= link_to new_actor_path do %>
 	<p>
-		<button class="btn btn-info">Add a person</button>
+		<button class="btn btn-info">Add a <%= @type %></button>
 	</p>
 <% end %>
 <div>
@@ -10,9 +10,12 @@
 		<% @people.each do |person| %>
 			<li>
 				<p>
-					<%= link_to person.full_name, person %>
+					<%= link_to person.full_name, :controller => "#{@type.pluralize}", 
+																				:action => 'show', 
+																				:id => person.id %>
 				</p>
 			</li>
 		<% end %>
 	</ul>
 </div>
+ 

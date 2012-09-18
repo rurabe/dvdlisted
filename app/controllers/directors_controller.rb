@@ -1,22 +1,23 @@
-class ActorsController < ApplicationController
+class DirectorsController < ApplicationController
 	before_filter :set_person, :only => [:show, :edit, :update, :destroy]
 	before_filter :set_type, :only => [:index, :new, :show, :edit]
 
-  def index
-  	@people = Person.joins(:roles).where("roles.role_type" => "actor")
+	def index
+		# TODO move this to the person model
+  	@people = Person.joins(:roles).where("roles.role_type" => "director")
   	render 'people/index'
-  end
+	end
 
-  def new
+	def new
   	@person = Person.new
   	@action = 'create'
   	render 'people/new'
-  end
+	end
 
-  def create
-  	@person = Person.new(params[:person])
+	def create
+		@person = Person.new(params[:person])
   	if @person.save
-  		redirect_to actor_path(@person)
+  		redirect_to director_path(@person)
   	else
   		flash[:error] = @person.errors.full_messages
   		render 'people/new'
@@ -33,9 +34,9 @@ class ActorsController < ApplicationController
     render 'people/edit'
   end
 
-  def update
+	def update
 		if @person.update_attributes(params[:person])
-  		redirect_to actor_path(@person)
+  		redirect_to director_path(@person)
   	else
   		flash[:error] = @person.errors.full_messages
   		render 'people/edit'
@@ -44,10 +45,10 @@ class ActorsController < ApplicationController
 
   def destroy
   	@person.destroy
-  	redirect_to actors_path
+  	redirect_to directors_path
   end
 
-  def set_person
+	def set_person
   	@person = Person.find(params[:id])
   end
 

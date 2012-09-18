@@ -1,13 +1,8 @@
-<h1>Update Person</h1>
+<h1>Update <%= @type %></h1>
 
-<%= render :partial => 'form' %>
+<%= render :partial => 'people/form' %>
 
-<h3><%= @person.first_name %>'s Movies</h3>
-	<ul>
-		<% @movies.each do |movie| %>
-			<li> <%= link_to movie.name, movie %> </li>
-		<% end %>
-	</ul>
+<%= render :partial => 'people/person_dvds' %>
 
 <p>
 	<%= form_for @role do |f| %>
@@ -19,6 +14,6 @@
 													:default => nil) %>
 
 		<%= f.hidden_field :person_id, :value => @person.id %>
-		<%= f.submit 'Give em credit' %>
+		<%= f.submit 'Give em credit', :class => 'btn btn-info' %>
 	<% end %>
 </p>
