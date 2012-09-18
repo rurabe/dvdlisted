@@ -3,9 +3,11 @@ class Person < ActiveRecord::Base
 
   has_many :roles,              :dependent => :destroy
   has_many :dvds_as_an_actor,   :through => :roles, :conditions => "roles.role_type = 'actor'",
-                                :source => :dvd
+                                :source => :dvd,
+                                :order => :name
   has_many :dvds_as_a_director, :through => :roles, :conditions => "roles.role_type = 'director'",
-                                :source => :dvd
+                                :source => :dvd,
+                                :order => :name
 
   validates_presence_of :first_name, 
   											:gender
