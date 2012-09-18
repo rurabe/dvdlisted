@@ -66,6 +66,17 @@ describe Dvd do
 		it 'has a delete button' do
 			page.should have_button('Delete DVD')
 		end
+
+		it 'displays the actors in the dvd' do
+			cast = FactoryGirl.create_list(:person, 3)
+			cast.each do |actor|
+				FactoryGirl.create(:role, :person_id => actor.id, :dvd_id => @dvd.id, :role_type => 'actor')
+			end
+			visit dvd_path(@dvd)
+			cast.each do |actor|
+				page.should have_link(actor.full_name)
+			end
+		end
 	end
 
 	describe '#edit' do

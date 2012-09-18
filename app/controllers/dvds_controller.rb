@@ -20,7 +20,8 @@ class DvdsController < ApplicationController
   end
 
   def show
-
+    @person = Person.new
+    @role = Role.new
   end
 
   def edit

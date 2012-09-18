@@ -3,7 +3,7 @@ class ActorsController < ApplicationController
 	before_filter :set_type, :only => [:index, :new, :show, :edit]
 
   def index
-  	@people = Person.joins(:roles).where("roles.role_type" => "actor")
+  	@people = Person.actors
   	render 'people/index'
   end
 
@@ -14,12 +14,17 @@ class ActorsController < ApplicationController
   end
 
   def create
+    dvd_id = params[:person].delete(:dvd)
   	@person = Person.new(params[:person])
   	if @person.save
-  		redirect_to actor_path(@person)
+      if dvd_id
+        create_role_too(dvd_id)
+      else
+        redirect_to actor_path(@person)
+      end
   	else
   		flash[:error] = @person.errors.full_messages
-  		render 'people/new'
+  		redirect_to :back
   	end
   end
 
@@ -45,6 +50,14 @@ class ActorsController < ApplicationController
   def destroy
   	@person.destroy
   	redirect_to actors_path
+  end
+
+  def create_role_too(dvd_id)
+    role = Role.new(:dvd_id => dvd_id, :person_id => @person.id, :role_type => 'actor') 
+    unless role.save
+      flash[:error] = role.errors.full_messages
+    end
+    redirect_to dvd_path(dvd_id)
   end
 
   def set_person

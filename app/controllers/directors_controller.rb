@@ -3,8 +3,7 @@ class DirectorsController < ApplicationController
 	before_filter :set_type, :only => [:index, :new, :show, :edit]
 
 	def index
-		# TODO move this to the person model
-  	@people = Person.joins(:roles).where("roles.role_type" => "director")
+  	@people = Person.director
   	render 'people/index'
 	end
 
@@ -15,12 +14,17 @@ class DirectorsController < ApplicationController
 	end
 
 	def create
+    dvd_id = params[:person].delete(:dvd)
 		@person = Person.new(params[:person])
   	if @person.save
-  		redirect_to director_path(@person)
+      if dvd_id
+        create_role_too(dvd_id)
+      else
+  		  redirect_to director_path(@person)
+      end
   	else
   		flash[:error] = @person.errors.full_messages
-  		render 'people/new'
+  		redirect_to :back
   	end
   end
 
@@ -46,6 +50,14 @@ class DirectorsController < ApplicationController
   def destroy
   	@person.destroy
   	redirect_to directors_path
+  end
+
+  def create_role_too(dvd_id)
+    role = Role.new(:dvd_id => dvd_id, :person_id => @person.id, :role_type => 'director') 
+    unless role.save
+      flash[:error] = role.errors.full_messages
+    end
+    redirect_to dvd_path(dvd_id)
   end
 
 	def set_person

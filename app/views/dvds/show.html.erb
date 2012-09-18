@@ -11,6 +11,10 @@
 	<% end %>
 </p>
 
+<%= render :partial => 'cast' %>
+
+<%= render :partial => 'new_people' %>
+
 <p>
 	<%= link_to edit_dvd_path(@dvd) do %>
 		<button class="btn btn-small btn-info">Edit DVD</button>
@@ -20,4 +24,3 @@
 		<button class="btn btn-small btn-danger">Delete DVD</button>
 	<% end %>
 </p>
-

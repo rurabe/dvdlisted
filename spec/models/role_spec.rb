@@ -17,5 +17,10 @@ describe Role do
   	it 'require person_ids' do
   		FactoryGirl.build(:role, :person_id => nil).should_not be_valid
   	end
+
+    it 'reject attempts to overwrite the current director' do
+      FactoryGirl.create(:role, :dvd_id => 10, :role_type => 'director')
+      FactoryGirl.build(:role, :dvd_id => 10, :role_type => 'director').should_not be_valid
+    end
   end
 end

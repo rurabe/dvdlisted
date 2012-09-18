@@ -1,6 +1,5 @@
 <h1><%= @person.full_name %></h1>
-<p><%= @person.date_of_birth %></p>
-<p><%= @person.gender %></p>
+<p><%= @person.gender %><%= ", " + age(@person.date_of_birth.to_date) if @person.date_of_birth %></p>
 
 <%= render :partial => 'people/person_dvds' %>
 <p>

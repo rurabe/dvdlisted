@@ -6,7 +6,7 @@ Dvdlisted::Application.routes.draw do
   resources :actors
   resources :directors
 
-  resources :roles, :only => :create
+  resources :roles, :only => [:create, :destroy]
 
   root :to => 'dvds#index'
 

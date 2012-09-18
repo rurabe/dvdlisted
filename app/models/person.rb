@@ -20,4 +20,12 @@ class Person < ActiveRecord::Base
   	name
   end
 
+  def self.actors
+    self.joins(:roles).where("roles.role_type" => "actor").uniq
+  end
+
+  def self.director
+    self.joins(:roles).where("roles.role_type" => "director").uniq
+  end
+
 end

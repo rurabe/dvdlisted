@@ -1,6 +1,6 @@
 <h1>Update <%= @type %></h1>
 
-<%= render :partial => 'people/form' %>
+<%= render :partial => 'people/form', :locals => { :type => @type, :action => @action } %>
 
 <%= render :partial => 'people/person_dvds' %>
 

@@ -1,0 +1,23 @@
+<p>
+	<%= link_to 'Add Director', '#', :class => 'btn btn-success btn-small', :id => 'add-director' %>
+	<%= link_to 'Add Actor', '#', :class => 'btn btn-success btn-small', :id => 'add-actor' %>
+</p>
+
+<div id="add-director-div">
+	<p>
+		<%= render :partial => 'roles/form', :locals => {:dvd => @dvd, :type => 'director'} %>
+	</p>
+	<div id="new-director-div">
+		<%= render :partial => 'people/form', :locals => {:type => 'director', :action => 'create'} %>
+	</div>
+</div>
+
+<div id="add-actor-div">
+	<p>
+		<%= render :partial => 'roles/form', :locals => {:dvd => @dvd, :type => 'actor'} %>
+	</p>
+	<div id="new-actor-div">
+		<%= render :partial => 'people/form', :locals => {:type => 'actor', :action => 'create'} %>
+	</div>
+</div>
+

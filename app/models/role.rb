@@ -6,4 +6,7 @@ class Role < ActiveRecord::Base
 
   validates :role_type, :inclusion => { :in => ['actor','director'] }
   validates_presence_of :dvd_id, :person_id
+  validates_uniqueness_of :role_type, :scope => :dvd_id, :if => Proc.new { |role| role.role_type == 'director'}
+
+
 end
