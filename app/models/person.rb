@@ -21,11 +21,11 @@ class Person < ActiveRecord::Base
   end
 
   def self.actors
-    self.joins(:roles).where("roles.role_type" => "actor").uniq
+    self.joins(:roles).where("roles.role_type" => "actor").order(:first_name).uniq
   end
 
   def self.director
-    self.joins(:roles).where("roles.role_type" => "director").uniq
+    self.joins(:roles).where("roles.role_type" => "director").order(:first_name).uniq
   end
 
 end

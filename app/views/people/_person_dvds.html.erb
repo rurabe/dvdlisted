@@ -9,7 +9,8 @@
 				<%= link_to role_path(:dvd_id => dvd.id, 
 											:person_id => @person.id, 
 											:role_type => 'director'), 
-										:method => "delete" do %>
+										:method => "delete",
+										:data => {:confirm => "Are you sure?"} do %>
 					<i class="icon-remove icon-white"></i>
 				<% end %>
 			 </li>
@@ -26,7 +27,8 @@
 				<%= link_to role_path(:dvd_id => dvd.id, 
 															:person_id => @person.id, 
 															:role_type => 'actor'), 
-										:method => "delete" do %>
+										:method => "delete",
+										:data => {:confirm => "Are you sure?"}  do %>
 					<i class="icon-remove icon-white"></i>
 				<% end %>
 			</li>
