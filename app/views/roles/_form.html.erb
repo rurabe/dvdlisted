@@ -1,5 +1,5 @@
 <%= form_for @role, :url => {:controller => "roles", :action => "create"} do |f| %>
-	<%= f.collection_select(:person_id, Person.all, :id, :full_name, 
+	<%= f.collection_select(:person_id, Person.order(:first_name), :id, :full_name, 
 												:include_blank => true )%>
 	<%= f.hidden_field :dvd_id, :value => dvd.id %>
 	<%= f.hidden_field :role_type, :value => type %>
