@@ -2,7 +2,9 @@ class RolesController < ApplicationController
 
 	def create
 		@role = Role.new(params[:role])
-		@role.save
+		unless @role.save
+			flash[:error] = @role.errors.full_messages
+		end
 		redirect_to :back
 	end
 

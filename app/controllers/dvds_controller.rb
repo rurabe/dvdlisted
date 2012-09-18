@@ -2,7 +2,7 @@ class DvdsController < ApplicationController
   before_filter :set_dvd, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @dvds = Dvd.all
+    @dvds = Dvd.order(:name)
   end
 
   def new
