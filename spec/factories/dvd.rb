@@ -5,5 +5,7 @@ FactoryGirl.define do
 		summary 			{ Faker::HipsterIpsum.words(40).join(" ") }
 		asin 					{ Random.rand(9999999999).to_s.rjust(10,"0") }
 
+		after(:build) {|dvd| dvd.class.skip_callback(:save, :before, :set_picture)}
+
 	end	
 end

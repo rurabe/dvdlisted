@@ -16,10 +16,11 @@ class Dvd < ActiveRecord::Base
   before_save :set_picture
 
   def set_picture
-    if self.asin_changed?
+    if self.asin_changed? && !self.asin.blank?
       response = Amazon::Ecs.item_search( asin, 
                                           :search_index => 'DVD',
                                           :response_group => 'Images')
+      puts response.first_item
 
       image_info = response.first_item.get('LargeImage')
 

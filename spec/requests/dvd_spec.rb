@@ -37,6 +37,15 @@ describe Dvd do
 		end 
 	end
 
+	describe '#create' do
+		it 'creates a new dvd' do
+			visit new_dvd_path
+			fill_in 'dvd[name]', :with => 'Naruto'
+			fill_in 'dvd[summary]', :with => 'Ninjas!'
+			expect { click_button 'Create Dvd' }.to change(Dvd, :count).by(1)
+		end
+	end
+
 	describe '#show' do
 		before :each do
 			@dvd = FactoryGirl.create(:dvd)
@@ -101,5 +110,27 @@ describe Dvd do
 			find_field('dvd[asin]').value.should == @dvd.asin
 		end
 
+	end
+
+	describe '#update' do
+		before :each do
+			@dvd = FactoryGirl.create(:dvd)
+		end
+		it 'changes the attributes' do
+			visit edit_dvd_path(@dvd)
+			fill_in 'dvd[name]', :with => 'Naruto'
+			click_button 'Update Dvd'
+			page.should have_content 'Naruto'
+		end
+	end
+
+	describe '#destroy' do
+		before :each do
+			@dvd = FactoryGirl.create(:dvd)
+		end
+
+		it 'destroys the dvd' do
+			expect { page.driver.submit :delete, dvd_path(@dvd), {} }.to change(Dvd, :count).by(-1)
+		end
 	end
 end
