@@ -17,13 +17,6 @@ class Dvd < ActiveRecord::Base
 
   def set_picture
     if self.asin
-
-      Amazon::Ecs.configure do |options|
-        options[:associate_tag] = ENV['AMAZON_ASSOCIATE_TAG']
-        options[:AWS_access_key_id] = ENV['AMAZON_ACCESS_KEY_ID']
-        options[:AWS_secret_key] = ENV['AMAZON_SECRET_KEY']
-      end
-
       response = Amazon::Ecs.item_search( asin, 
                                           :search_index => 'DVD',
                                           :response_group => 'Images')
