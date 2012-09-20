@@ -16,7 +16,7 @@ class Dvd < ActiveRecord::Base
   before_save :set_picture
 
   def set_picture
-    if self.asin
+    if self.asin_changed?
       response = Amazon::Ecs.item_search( asin, 
                                           :search_index => 'DVD',
                                           :response_group => 'Images')
