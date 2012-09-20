@@ -3,3 +3,23 @@
 An app to manage your DVD library.  Written primarily to achieve gainful employment.
 
 Hosted at http://dvdlisted.herokuapp.com
+
+A few notes:
+
+* I had this nagging feeling throughout that Actors and Directors should have had a polymorphic relationship to DVDs, but each time I went to implement it, I came away deciding that they shouldn't. There are a couple reasons. A) They are both people, so should largely have the same attributes. B) They can cross over (a la Clint Eastwood) and it would be more elegant to have them represented as one object that can be either than as one actor and one director object. So I kind of like the way I did it, even though it complicated things and on some level I duplicated the polymorphic functionality with the role_type field.
+
+* Having gone this far down the road (and not having time to turn back) I kind of wish I had set it up where dvds could accept nested attributes for people and roles, and people could have accepted nested attributes for dvds and roles. This would have allowed me to create new actors or dvds at the same time as one another, AND link them with roles.
+
+* The next feature I wanted to do was adding IMDB photos. And once I had an API (or was scraping) them, I could add all kinds of other movie info as well.
+
+* As far as amazon, it would be trivial to add the picture based on the title, but once I open it up to fuzzy searches like that, I would have had to have made a mechanism to sort through false returns, and I didn't have time. If I did, I probably would have made some kind of suggestion page where the results came back. This would also be a great feature to fill in missing data.
+
+* I know I should stub Amazon and run the tests normally, but I used a gem to interact with it and didn't have the time tonight to dig into it to figure out what to stub. Same goes for testing that set_picture callback. 
+
+* I TDD'ed a lot of it, but not all of it. I ended up backfilling some of the tests at the end... mostly because I'm afraid I'll change something and not know it's broken.
+
+* I've never done search functionality that crossed multiple classes before. The way I probably would have implemented it is to render all of the DVDs with the actors and directors in the same div, and used jquery to filter them out on a keydown event. It might take the page longer to load but it would provide a pretty good searching experience.
+
+* I didn't use scaffolding... which seems to fail the 'dont reinvent the wheel' criteria, but I've never encountered a professional who used them regularly and I don't really like the way they clutter up my code. That said, it probably took me longer to do it manually. Full disclosure :)
+
+I had fun digging into it. Hope you like it!
